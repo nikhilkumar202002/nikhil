@@ -403,3 +403,21 @@
     });
 
 })(window.jQuery);
+
+
+
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent default form submission
+    const form = e.target;
+
+    emailjs.sendForm('service_ltrlc89', 'template_vfq47o7', form)
+        .then(() => {
+            document.querySelector(".input-success").style.display = "block";
+            document.querySelector(".input-error").style.display = "none";
+            form.reset();
+        }, () => {
+            document.querySelector(".input-success").style.display = "none";
+            document.querySelector(".input-error").style.display = "block";
+        });
+});
+
